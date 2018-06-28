@@ -1,0 +1,52 @@
+<?php
+
+namespace VB\OptionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypicalOffer
+ *
+ * @ORM\Table(name="typical_offer", indexes={@ORM\Index(name="Typical_Offer_Adresse_Domiciliataire0_FK", columns={"id_domiciliataire"}), @ORM\Index(name="Typical_Offer_Type_Entity1_FK", columns={"id_entity"})})
+ * @ORM\Entity(repositoryClass="VB\OptionBundle\Repository\TypicalOfferRepository")
+ */
+class TypicalOffer
+{
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price_offer", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $priceOffer;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_offer", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idOffer;
+
+    /**
+     * @var \VB\OptionBundle\Entity\AdresseDomiciliataire
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\AdresseDomiciliataire")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_domiciliataire", referencedColumnName="id_domiciliataire")
+     * })
+     */
+    private $idDomiciliataire;
+
+    /**
+     * @var \VB\OptionBundle\Entity\TypeEntity
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\TypeEntity")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_entity", referencedColumnName="id_entity")
+     * })
+     */
+    private $idEntity;
+
+
+}

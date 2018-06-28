@@ -1,0 +1,42 @@
+<?php
+
+namespace VB\CustomerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * HistoricConnexion
+ *
+ * @ORM\Table(name="historic_connexion", indexes={@ORM\Index(name="Historic_Connexion_Customer_Admin0_FK", columns={"id_customer_admin"})})
+ * @ORM\Entity(repositoryClass="VB\CustomerBundle\Repository\HistoricConnexionRepository")
+ */
+class HistoricConnexion
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_connexion", type="date", nullable=false)
+     */
+    private $dateConnexion;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_connexion", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idConnexion;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\CustomerAdmin
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\CustomerAdmin")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer_admin", referencedColumnName="id_customer_admin")
+     * })
+     */
+    private $idCustomerAdmin;
+
+
+}

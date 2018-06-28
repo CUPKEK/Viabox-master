@@ -1,0 +1,112 @@
+<?php
+
+namespace VB\ProspectsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Prospect
+ *
+ * @ORM\Table(name="prospect", indexes={@ORM\Index(name="prospect_Adresse_Domiciliataire0_FK", columns={"id_domiciliataire"})})
+ * @ORM\Entity(repositoryClass="VB\ProspectsBundle\Repository\ProspectRepository")
+ */
+class Prospect
+{
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="first_name_p", type="string", length=50, nullable=true)
+     */
+    private $firstNameP;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="last_name_p", type="string", length=50, nullable=true)
+     */
+    private $lastNameP;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="birthday_P", type="date", nullable=true)
+     */
+    private $birthdayP;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="phone_number_fixe_P", type="integer", nullable=true)
+     */
+    private $phoneNumberFixeP;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="phone_number_portable_P", type="integer", nullable=true)
+     */
+    private $phoneNumberPortableP;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="email_P", type="string", length=30, nullable=true)
+     */
+    private $emailP;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address_p", type="string", length=50, nullable=false)
+     */
+    private $addressP;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address2_P", type="string", length=50, nullable=false)
+     */
+    private $address2P;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country_P", type="string", length=25, nullable=false)
+     */
+    private $countryP;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city_P", type="string", length=50, nullable=false)
+     */
+    private $cityP;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_entity_p", type="string", length=15, nullable=false)
+     */
+    private $typeEntityP;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_prospect", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProspect;
+
+    /**
+     * @var \VB\OptionBundle\Entity\AdresseDomiciliataire
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\AdresseDomiciliataire")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_domiciliataire", referencedColumnName="id_domiciliataire")
+     * })
+     */
+    private $idDomiciliataire;
+
+
+}

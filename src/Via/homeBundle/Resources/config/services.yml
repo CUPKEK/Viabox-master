@@ -1,0 +1,4 @@
+services:
+#    viahome.example:
+#        class: Via\homeBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

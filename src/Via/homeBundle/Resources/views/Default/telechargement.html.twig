@@ -1,0 +1,35 @@
+{% extends "ViahomeBundle::layout.html.twig" %}
+
+{% block title %}
+    devise - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<hr>
+
+    {% block viahomepage_body %}
+        <div class="container">
+            <h2>Téléchargement</h2>
+            <form action="/action_page.php">
+                <div class="form-group">
+                    <label><strong>Pièce d'identité</strong>
+                    <input type="file" class="form-control-file border" name="file">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label><strong>Status</strong>
+                    <input type="file" class="form-control-file border" name="file">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label><strong>Kbis</strong>
+                    <input type="file" class="form-control-file border" name="file">
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    {% endblock %}
+
+{% endblock %}

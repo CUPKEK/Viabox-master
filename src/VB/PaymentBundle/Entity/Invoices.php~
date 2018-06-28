@@ -1,0 +1,85 @@
+<?php
+
+namespace VB\PaymentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Invoices
+ *
+ * @ORM\Table(name="invoices", indexes={@ORM\Index(name="Invoices_Contrat0_FK", columns={"id_contrat"})})
+ * @ORM\Entity(repositoryClass="VB\PaymentBundle\Repository\InvoicesRepository")
+ */
+class Invoices
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_invoices", type="date", nullable=false)
+     */
+    private $dateInvoices;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sum", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $sum;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pdf_invoice", type="decimal", precision=10, scale=0, nullable=false)
+     */
+    private $pdfInvoice;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="debit", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $debit;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_invoices", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idInvoices;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\Contrat
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\Contrat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_contrat", referencedColumnName="id_contrat")
+     * })
+     */
+    private $idContrat;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VB\paymentBundle\Entity\Payment", mappedBy="idInvoices")
+     */
+    private $idPayment;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VB\paymentBundle\Entity\InvoiceLine", mappedBy="idInvoices")
+     */
+    private $idLine;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idPayment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idLine = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

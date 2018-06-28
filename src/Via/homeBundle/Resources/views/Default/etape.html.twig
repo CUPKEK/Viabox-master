@@ -1,0 +1,26 @@
+
+
+    {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
+
+    <hr>
+    <style>
+        span {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            margin: 70px;
+            background-color: #555;
+        }
+    </style>
+    {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+    {% block viahomepage_body %}
+        <div class="container">
+            <span class="rounded-circle"></span>
+            <span class="rounded-circle"></span>
+            <span class="rounded-circle"></span>
+            <span class="rounded-circle"></span>
+            <span class="rounded-circle"></span>
+
+
+        </div>
+    {% endblock %}

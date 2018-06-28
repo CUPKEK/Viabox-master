@@ -1,0 +1,31 @@
+{% extends "ViahomeBundle::layout.html.twig" %}
+{% block title %}
+    Données- {{ parent() }}
+{% endblock %}
+
+{% block viahomepage_body %}
+<p>
+    <a href="{{ path('viahome_homepage') }}" class="btn btn-outline-info">
+    </a>
+    <a href="{{ path('via_page_connect') }}" class="btn btn-outline-primary">
+    </a>
+   
+    
+    <a href="{{ path('via_page_telechargement') }}" class="btn btn-outline-info">
+    </a>
+    <a href="{{ path('via_page_etape') }}" class="btn btn-outline-info">
+    </a>
+    <a href="{{ path('via_page_formassos') }}" class="btn btn-outline-info">
+    </a>
+    <a href="{{ path('via_page_formentrep') }}" class="btn btn-outline-info">
+    </a>
+    <a href="{{ path('via_page_formpart') }}" class="btn btn-outline-info">
+    </a>
+    a href="{{ path('via_page_interfclient') }}" class="btn btn-outline-info">
+    </a>
+    a href="{{ path('fos_user_profile') }}" class="btn btn-outline-info">
+    </a>
+    a href="{{ path('via_page_contact') }}" class="btn btn-outline-info">
+    </a>
+</p>
+{% endblock %}

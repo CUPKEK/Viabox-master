@@ -1,0 +1,99 @@
+<?php
+
+namespace VB\CustomerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CustomerAdmin
+ *
+ * @ORM\Table(name="customer_admin", uniqueConstraints={@ORM\UniqueConstraint(name="Customer_Admin_Customer0_AK", columns={"id_customer"})})
+ * @ORM\Entity(repositoryClass="VB\CustomerBundle\Repository\CustomerAdminRepository")
+ */
+class CustomerAdmin
+{
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enable", type="boolean", nullable=false)
+     */
+    private $enable;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=25, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email_verification_token", type="string", length=25, nullable=false)
+     */
+    private $emailVerificationToken;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="verified_at", type="date", nullable=false)
+     */
+    private $verifiedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="expired_at", type="date", nullable=false)
+     */
+    private $expiredAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=30, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password_reset_token", type="string", length=30, nullable=false)
+     */
+    private $passwordResetToken;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="password_requested_at", type="date", nullable=false)
+     */
+    private $passwordRequestedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_connection", type="date", nullable=false)
+     */
+    private $lastConnection;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_customer_admin", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCustomerAdmin;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer", referencedColumnName="id_customer")
+     * })
+     */
+    private $idCustomer;
+
+
+}

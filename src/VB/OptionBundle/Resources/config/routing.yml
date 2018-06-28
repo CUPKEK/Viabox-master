@@ -1,0 +1,12 @@
+vb_option_homepage:
+    path:     /
+    defaults: { _controller: VBOptionBundle:Default:index }
+
+vb_page_Contrat:
+    path:     /contrat
+    defaults: { _controller: VBOptionBundle:contrat:contrat}
+
+vb_page_form:
+    path:     /formulaire
+    defaults: { _controller: VBOptionBundle:formulaire:add}
+

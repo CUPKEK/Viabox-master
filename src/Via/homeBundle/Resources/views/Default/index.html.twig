@@ -1,0 +1,148 @@
+
+{% extends "ViahomeBundle::menu.html.twig" %}
+
+
+
+
+    {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+{% block viahomepage_body %}
+    <style>
+        input[type=text] {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+        }
+
+        .container-fluid {
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            margin-top: 15px;
+        }
+    </style>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <i class="fa fa-users" style="font-size:60px;color:lightslategrey;margin-left: 5px;">Espace client</i><br/>
+        <div class="container-fluid"><br/>
+            <h2>Gestion du courrier</h2>
+
+            <input class="form-control col-sm-10" id="myInput" onkeyup="myFunction()" title="Type in a name" type="text" placeholder="Search.."><br/>
+            <ul class="pagination pagination-bordered">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+            <div class="table-responsive">
+                <table id="myTable" class="table table-bordered table-striped">
+                    <thead class="thead-light">
+                    <tr>
+                        <th></th>
+                        <th>Numéro Courrier</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Poids en kg</th>
+                        <th>Expéditeur</th>
+                        <th>Visuels</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><div class="checkbox">
+                                <label><input type="checkbox" value=""></label>
+                            </div></td>
+                        <td>1</td>
+                        <td>Recommandé</td>
+                        <td>28/05/2018</td>
+                        <td>35</td>
+                        <td>LCL Banque</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default" style="border: 1px solid black;"><i class="fa fa-eye"></i>Ouvrir</button>
+                                <button type="button" class="btn btn-default" style="border: 1px solid black;"><i class="fa fa-edit"></i>Editer</button>
+                            </div>
+                        </td>
+                        <td><div class="checkbox">
+                                <label><input type="checkbox" value=""><i class="fa fa-file" style="color:gray()";></i>Scan</label>
+                                <label><input type="checkbox" value=""><i class="fa fa-repeat" style="color:blue";></i>Retour</label>
+                                <label><input type="checkbox" value=""><i class="fa fa-remove" style="color:red";></i>Destruction</label>
+                            </div></td>
+
+                    </tr>
+                    <tr>
+                        <td><div class="checkbox">
+                                <label><input type="checkbox" value=""></label>
+                            </div></td>
+                        <td>2</td>
+                        <td>Recommandé</td>
+                        <td>29/05/2018</td>
+                        <td>5</td>
+                        <td>Boursorama Banque</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default" style="border: 1px solid black;"><i class="fa fa-eye" ></i>Ouvrir</button>
+                                <button type="button" class="btn btn-default" style="border: 1px solid black;"><i class="fa fa-edit"></i>Editer</button>
+                            </div>
+                        </td>
+                        <td><div class="checkbox">
+                                <label><input type="checkbox" value=""><i class="fa fa-file" style="color:gray()";></i>Scan</label>
+                                <label><input type="checkbox" value=""><i class="fa fa-repeat" style="color:blue";></i>Retour</label>
+                                <label><input type="checkbox" value=""><i class="fa fa-remove" style="color:red";></i>Destruction</label>
+                            </div></td>
+
+                    </tr>
+                </table>
+                <ul class="pagination pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            function myFunction() {
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+
+
+    {% else %}
+<div class="container text-center">
+    <h3>Pourquoi ViaBox?</h3>
+    <h4>Faites le choix</h4>
+    <h2>De gagner du temps</h2>
+    <h4>Votre domiciliation à Montpellier</h4>
+    <p>1400 rue de la Castelle-34070 Montpellier GAROSUD</p>
+
+    <button type="button" class="btn btn-danger"><a href="{{ path('vb_page_Contrat') }}">Nos contrats</a></button>
+</div>
+    {% endif %}
+{% endblock %}
+

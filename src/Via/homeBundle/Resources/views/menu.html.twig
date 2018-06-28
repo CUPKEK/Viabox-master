@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<style>
+    p {
+        font-family: "Times New Roman", Times, serif
+    }
+
+
+    .navbar{
+        overflow: hidden;
+        background-color: #333;
+    }
+
+
+    .navbar a {
+
+         color: green;
+         text-align: center;
+         padding: 14px 16px;
+         text-decoration: none;
+         font-size: 17px;
+     }
+
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+
+    .navbar-right {
+        float: right;
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: center;
+    }
+
+    .button1 {border-radius: 40%;}
+
+</style>
+    <div class="navbar">
+        <a class="navbar-brand" href="{{ path('viahome_homepage') }}">
+            <h4><strong>ViaBox</strong>.fr</h4>
+        </a>
+        <button class="button button1" href="{{ path('via_page_contact') }}"><i class="fa fa-phone"> 0 800 222 548</i></button>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <span class="menuWelcomeUser">Bienvenue, {{ app.user.username }}</span>
+    <a class="navbar-right" href="{{ path('fos_user_profile_show') }}">Mon compte</a>
+    <a class="navbar-right" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+
+    {% else %}
+        <span class="menuWelcomeUser">Bienvenue, Visiteur</span>
+        <a class="navbar-right" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        <a class="navbar-right" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+    {% endif %}
+    </div>
+
+    {% block viahomepage_body %}
+    {% endblock %}
+
+    <hr>
+{% endblock %}
+
+
+
+
+
+
+
+

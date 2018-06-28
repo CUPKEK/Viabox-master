@@ -1,0 +1,79 @@
+<?php
+
+namespace VB\CustomerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contrat
+ *
+ * @ORM\Table(name="contrat", indexes={@ORM\Index(name="Contrat_Customer_Option0_FK", columns={"id_customer_option"})})
+ * @ORM\Entity(repositoryClass="VB\CustomerBundle\Repository\ContratRepository")
+ */
+class Contrat
+{
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date_contrat", type="date", nullable=false)
+     */
+    private $startDateContrat;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date_contrat", type="date", nullable=false)
+     */
+    private $endDateContrat;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price_contrat", type="float", precision=10, scale=0)
+     */
+    private $priceContrat;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enable_contrat", type="boolean")
+     */
+    private $enableContrat;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_contrat", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $idContrat;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\CustomerOption
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\CustomerOption", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer_option", referencedColumnName="id_customer_option", nullable=false)
+     * })
+     */
+    private $idCustomerOption;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VB\CustomerBundle\Entity\Customer", mappedBy="idContrat")
+     */
+    private $idCustomer;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCustomer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}
+

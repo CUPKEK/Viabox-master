@@ -1,0 +1,34 @@
+viahome_homepage:
+    path:     /
+    defaults: { _controller: ViahomeBundle:Default:index }
+
+via_page_connect:
+    path:     /connect
+    defaults: { _controller: ViahomeBundle:Default:connect}
+
+via_page_etape:
+    path:     /etape
+    defaults: { _controller: ViahomeBundle:Default:etape}
+
+via_page_formassos:
+    path:     /formassos
+    defaults: { _controller: ViahomeBundle:Default:formassos}
+
+via_page_formentrep:
+    path:     /formentrep
+    defaults: { _controller: ViahomeBundle:Default:formentrep}
+
+via_page_formpart:
+    path:     /formpart
+    defaults: { _controller: ViahomeBundle:Default:formpart}
+
+via_page_client:
+    path:     /interfclient
+    defaults: { _controller: ViahomeBundle:Default:interfclient}
+
+via_page_contact:
+    path:     /contact
+    defaults: { _controller: ViahomeBundle:Default:contact}
+
+
+

@@ -1,0 +1,42 @@
+<?php
+
+namespace VB\OptionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypeEntity
+ *
+ * @ORM\Table(name="type_entity", indexes={@ORM\Index(name="Type_Entity_Customer0_FK", columns={"id_customer"})})
+ * @ORM\Entity(repositoryClass="VB\OptionBundle\Repository\TypeEntityRepository")
+ */
+class TypeEntity
+{
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="type_entity", type="string", length=25, nullable=true)
+     */
+    private $typeEntity;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_entity", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEntity;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer", referencedColumnName="id_customer")
+     * })
+     */
+    private $idCustomer;
+
+
+}

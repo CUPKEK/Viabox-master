@@ -1,0 +1,101 @@
+<?php
+
+namespace VB\ProductionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Production
+ *
+ * @ORM\Table(name="production", indexes={@ORM\Index(name="Production_Customer0_FK", columns={"id_customer"}), @ORM\Index(name="Production_Shipper_Address1_FK", columns={"id_shipper_address"})})
+ * @ORM\Entity(repositoryClass="VB\ProductionBundle\Repository\ProductionRepository")
+ */
+class Production
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_receipt", type="date", nullable=false)
+     */
+    private $dateReceipt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_processing", type="date", nullable=false)
+     */
+    private $dateProcessing;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="format", type="string", length=20, nullable=false)
+     */
+    private $format;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="poids", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $poids;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_pages", type="integer", nullable=false)
+     */
+    private $nbPages;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="option_scan", type="string", length=20, nullable=false)
+     */
+    private $optionScan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="option_mail", type="string", length=20, nullable=false)
+     */
+    private $optionMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="option_delete", type="string", length=20, nullable=false)
+     */
+    private $optionDelete;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_production", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProduction;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="Bundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer", referencedColumnName="id_customer")
+     * })
+     */
+    private $idCustomer;
+
+    /**
+     * @var \VB\ProductionBundle\Entity\ShipperAddress
+     *
+     * @ORM\ManyToOne(targetEntity="VB\productionBundle\Entity\ShipperAddress")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_shipper_address", referencedColumnName="id_shipper_address")
+     * })
+     */
+    private $idShipperAddress;
+
+
+}

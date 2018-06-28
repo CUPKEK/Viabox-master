@@ -1,0 +1,39 @@
+<?php
+
+namespace VB\OptionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ScanOption
+ *
+ * @ORM\Table(name="scan_option")
+ * @ORM\Entity(repositoryClass="VB\OptionBundle\Repository\ScanOptionRepository")
+ */
+class ScanOption
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="option_scan", type="string", length=20, nullable=false)
+     */
+    private $optionScan;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix_scan", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $prixScan;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_scan", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idScan;
+
+
+}

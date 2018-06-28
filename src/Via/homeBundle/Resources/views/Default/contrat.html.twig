@@ -1,0 +1,84 @@
+{% extends "ViahomeBundle::layout.html.twig" %}
+
+{% block title %}
+    devise - {{ parent() }}
+{% endblock %}
+
+
+    {% block viahomepage_body %}
+        <style>
+
+            .btn-group .button {
+                background-color: #4CAF50; /* Green */
+                border: 1px solid green;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+                width: 50px;
+                display: block;
+            }
+
+            .btn-group .button:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
+
+            .btn-group .button:hover {
+                background-color: #3e8e41;
+            }
+
+            .card
+            {
+                border-radius:12px;
+                width: 60%;
+            }
+
+        </style>
+
+        <div class="container-fluid">
+            <div class="btn-group-vertical" style="float: right">
+                <button class="button">34</button>
+                <button class="button">87</button>
+                <button class="button">66</button>
+                <button class="button">11</button>
+            </div>
+            <h2>Faites le choix</h2>
+            <h1>du tout numérique</h1>
+            <p> Votre domiciliation à Montpellier</p>
+            <h6>1400 RUE DE LA CASTELLE-34070 MONTPELLIER</h6>
+            <h6>GAROSUD</h6>
+            <div class="card-columns" >
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text">SOCIETES</p>
+                        <p class="card-text"><h1 style="font-size:80px">20€</h1></p><br/>
+                        <p class="card-text"><button type="button" class="btn btn-default" style=" border-radius:40px;width: 150px"><a href="{{ path('via_page_donnes') }}"><h1 style="font-size:30px">OK</h1></a></button></p><br/>
+                    </div>
+                </div>
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text">ASSOCIATIONS</p>
+                        <p class="card-text"><h1 style="font-size:80px">15€</h1></p><br/>
+                        <p class="card-text"><button type="button" class="btn btn-default" style=" border-radius:40px;width: 150px"><a href="{{ path('via_page_formassos') }}"><h1 style="font-size:30px">OK</h1></a></button></p><br/>
+                    </div>
+                </div>
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text">ENTREPRENEURS</p>
+                        <p class="card-text"><h1 style="font-size:80px">18€</h1></p><br/>
+                        <p class="card-text"><button type="button" class="btn btn-default" style=" border-radius:40px;width: 150px"><a href="{{ path('via_page_formentrep') }}"><h1 style="font-size:30px">OK</h1></a></button></p><br/>
+                    </div>
+                </div>
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text">PARTICULIERS</p>
+                        <p class="card-text"><h1 style="font-size:80px">9€</h1></p><br/>
+                        <p class="card-text"><button type="button" class="btn btn-default" style=" border-radius:40px;width: 150px"><a href="{{ path('via_page_formpart') }}"><h1 style="font-size:30px;">OK</h1></a></button></p><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

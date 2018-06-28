@@ -1,0 +1,130 @@
+<?php
+
+namespace VB\CustomerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Customer
+ *
+ * @ORM\Table(name="customer", uniqueConstraints={@ORM\UniqueConstraint(name="Customer_Customer_Admin0_AK", columns={"id_customer_admin"})}, indexes={@ORM\Index(name="Customer_Customer_Address0_FK", columns={"id_customer_address"})})
+ * @ORM\Entity(repositoryClass="VB\CustomerBundle\Repository\CustomerRepository")
+ */
+class Customer
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=50, nullable=false)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=50, nullable=false)
+     */
+    private $lastName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthday", type="date", nullable=false)
+     */
+    private $birthday;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="update_at", type="date", nullable=true)
+     */
+    private $updateAt;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="phone_number_fixe", type="integer", nullable=true)
+     */
+    private $phoneNumberFixe;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="phone_number_portable", type="integer", nullable=false)
+     */
+    private $phoneNumberPortable;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="subscribe_to_newsletter", type="boolean", nullable=false)
+     */
+    private $subscribeToNewsletter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=30, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_customer", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCustomer;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\CustomerAddress
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\CustomerAddress")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer_address", referencedColumnName="id_customer_address")
+     * })
+     */
+    private $idCustomerAddress;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\CustomerAdmin
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\CustomerAdmin")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer_admin", referencedColumnName="id_customer_admin")
+     * })
+     */
+    private $idCustomerAdmin;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VB\CustomerBundle\Entity\Contrat", inversedBy="idCustomer")
+     * @ORM\JoinTable(name="subscribe",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_customer", referencedColumnName="id_customer")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_contrat", referencedColumnName="id_contrat")
+     *   }
+     * )
+     */
+    private $idContrat;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idContrat = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

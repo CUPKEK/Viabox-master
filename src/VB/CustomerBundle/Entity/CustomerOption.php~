@@ -1,0 +1,91 @@
+<?php
+
+namespace VB\CustomerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CustomerOption
+ *
+ * @ORM\Table(name="customer_option", indexes={@ORM\Index(name="Customer_Option_Type_Entity0_FK", columns={"id_entity"}), @ORM\Index(name="Customer_Option_Mail_Option1_FK", columns={"id_mail"}), @ORM\Index(name="Customer_Option_Scan_Option2_FK", columns={"id_scan"}), @ORM\Index(name="Customer_Option_Customer3_FK", columns={"id_customer"}), @ORM\Index(name="Customer_Option_Adresse_Domiciliataire4_FK", columns={"id_domiciliataire"})})
+ * @ORM\Entity(repositoryClass="VB\CustomerBundle\Repository\CustomerOptionRepository")
+ */
+class CustomerOption
+{
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price_customer_option", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $priceCustomerOption;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="to_date", type="date", nullable=false)
+     */
+    private $toDate;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_customer_option", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $idCustomerOption;
+
+    /**
+     * @var \VB\OptionBundle\Entity\AdresseDomiciliataire
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\AdresseDomiciliataire")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_domiciliataire", referencedColumnName="id_domiciliataire")
+     * })
+     */
+    private $idDomiciliataire;
+
+    /**
+     * @var \VB\CustomerBundle\Entity\Customer
+     *
+     * @ORM\ManyToOne(targetEntity="VB\CustomerBundle\Entity\Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer", referencedColumnName="id_customer")
+     * })
+     */
+    private $idCustomer;
+
+    /**
+     * @var \VB\OptionBundle\Entity\MailOption
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\MailOption")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_mail", referencedColumnName="id_mail")
+     * })
+     */
+    private $idMail;
+
+    /**
+     * @var \VB\OptionBundle\Entity\ScanOption
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\ScanOption")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_scan", referencedColumnName="id_scan")
+     * })
+     */
+    private $idScan;
+
+    /**
+     * @var \VB\OptionBundle\Entity\TypeEntity
+     *
+     * @ORM\ManyToOne(targetEntity="VB\OptionBundle\Entity\TypeEntity")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_entity", referencedColumnName="id_entity")
+     * })
+     */
+    private $idEntity;
+
+
+    
+
+}

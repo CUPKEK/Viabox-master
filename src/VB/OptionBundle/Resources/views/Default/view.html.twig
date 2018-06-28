@@ -1,0 +1,17 @@
+{% extends "ViahomeBundle::layout.html.twig" %}
+{% block title %}
+    Données- {{ parent() }}
+{% endblock %}
+
+{% block viahomepage_body %}
+<p>
+
+    <a href="{{ path('vb_page_Contrat') }}" class="btn btn-outline-info">
+    </a>
+
+    <a href="{{ path('vb_page_form') }}" class="btn btn-outline-info">
+    </a>
+
+
+</p>
+{% endblock %}

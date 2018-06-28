@@ -1,0 +1,3 @@
+vb_customer_homepage:
+    path:     /
+    defaults: { _controller: VBCustomerBundle:Default:index }

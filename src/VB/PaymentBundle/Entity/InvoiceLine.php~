@@ -1,0 +1,57 @@
+<?php
+
+namespace VB\PaymentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * InvoiceLine
+ *
+ * @ORM\Table(name="invoice_line", indexes={@ORM\Index(name="Invoice_line_Production0_FK", columns={"id_production"})})
+ * @ORM\Entity(repositoryClass="VB\PaymentBundle\Repository\InvoiceLineRepository")
+ */
+class InvoiceLine
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_line", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idLine;
+
+    /**
+     * @var \VB\ProductionBundle\Entity\Production
+     *
+     * @ORM\ManyToOne(targetEntity="VB\ProductionBundle\Entity\Production")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_production", referencedColumnName="id_production")
+     * })
+     */
+    private $idProduction;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VB\PaymentBundle\Entity\Invoices", inversedBy="idLine")
+     * @ORM\JoinTable(name="comprised",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_line", referencedColumnName="id_line")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_invoices", referencedColumnName="id_invoices")
+     *   }
+     * )
+     */
+    private $idInvoices;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idInvoices = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

@@ -1,0 +1,13 @@
+{% extends "ViahomeBundle::menu.html.twig" %}
+
+{% block title %}
+    devise - {{ parent() }}
+{% endblock %}
+
+
+ {% block viahomepage_body %}
+     <div class="container">
+         <h2>Formulaire d'enregistrement</h2>
+     {{ form(form) }}
+     </div>
+{% endblock %}

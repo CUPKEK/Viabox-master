@@ -1,0 +1,3 @@
+vb_prospects_homepage:
+    path:     /
+    defaults: { _controller: VBProspectsBundle:Default:index }

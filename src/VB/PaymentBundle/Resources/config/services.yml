@@ -1,0 +1,4 @@
+services:
+#    vb_payment.example:
+#        class: VB\PaymentBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,64 @@
+{% extends "ViahomeBundle::menu.html.twig" %}
+
+{% block title %}
+    devise - {{ parent() }}
+{% endblock %}
+
+
+    {% block viahomepage_body %}
+        <style>
+
+            .btn-group .button {
+                background-color: #4CAF50; /* Green */
+                border: 1px solid green;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+                width: 50px;
+                display: block;
+            }
+
+            .btn-group .button:not(:last-child) {
+                border-bottom: none; /* Prevent double borders */
+            }
+
+            .btn-group .button:hover {
+                background-color: #3e8e41;
+            }
+
+            .card
+            {
+                border-radius:12px;
+                width: 60%;
+            }
+
+        </style>
+
+        <div class="container-fluid">
+            <div class="btn-group-vertical" style="float: right">{% for codePostal in AffCp %}
+                <button class="button">{{codePostal.getCodePostal}}</button>
+                {% endfor %}
+            </div>
+            <h2>Faites le choix</h2>
+            <h1>du tout numérique</h1>
+            <p> Votre domiciliation à Montpellier</p>
+            <h6>1400 RUE DE LA CASTELLE-34070 MONTPELLIER</h6>
+            <h6>GAROSUD</h6>
+            <div class="card-columns" >
+                {% for prix in listPrix %}
+                <div class="card bg-light">
+                    <div class="card-body text-center" >
+                       <p class="card-text">{{prix.typeEntity}}</p>
+                       <p class="card-text"><h1 style="font-size:80px"> {{prix.priceOffer}}</h1></p>
+                       <br/>
+                        <p class="card-text"><button class="btn btn-default" style=" border-radius:40px;width: 150px"><a href="{{ path('vb_page_form') }}"><h1 style="font-size:30px"> OK</h1></a></button></p>
+                        <br/>
+                </div>
+        </div>
+
+                {% endfor %}
+        </div>
+
+{% endblock %}

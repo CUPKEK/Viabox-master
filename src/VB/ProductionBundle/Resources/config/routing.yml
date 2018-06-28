@@ -1,0 +1,3 @@
+vb_production_homepage:
+    path:     /
+    defaults: { _controller: VBProductionBundle:Default:index }

@@ -1,0 +1,32 @@
+<?php
+
+namespace VB\PaymentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypePayment
+ *
+ * @ORM\Table(name="type_payment")
+ * @ORM\Entity(repositoryClass="VB\PaymentBundle\Repository\TypePaymentRepository")
+ */
+class TypePayment
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_payment", type="string", length=15, nullable=false)
+     */
+    private $typePayment;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_type_payment", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTypePayment;
+
+
+}

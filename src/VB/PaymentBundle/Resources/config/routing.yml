@@ -1,0 +1,3 @@
+vb_payment_homepage:
+    path:     /
+    defaults: { _controller: VBPaymentBundle:Default:index }
